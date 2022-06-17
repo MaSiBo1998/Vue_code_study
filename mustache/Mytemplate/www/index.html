@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  <div id="container"></div>
+    <script src="/xuni/bundle.js"></script>
+    <script>
+        var templateStr = `
+        <div>
+        <ul>
+          {{#students}}
+          <li class="ii">
+            学生{{name}}的爱好是
+            <ol>
+              {{#hobbies}}
+              <li>{{.}}</li>
+              {{/hobbies}}
+            </ol>
+          </li>
+          {{/students}}
+        </ul>
+      </div>
+`
+        var data = {
+          students: [
+                { 'name': '小明', 'hobbies': ['编程', '游泳'] },
+                { 'name': '小红', 'hobbies': ['看书', '弹琴', '画画'] },
+                { 'name': '小强', 'hobbies': ['锻炼'] }
+            ]
+        }
+        var domStr =My_Template.render(templateStr, data)
+        console.log(domStr)
+        // 渲染上树
+        var container = document.getElementById('container');
+        container.innerHTML = domStr;
+    </script>
+</body>
+
+</html>
